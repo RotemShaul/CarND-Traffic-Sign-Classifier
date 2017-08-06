@@ -1,54 +1,88 @@
-## Project: Build a Traffic Sign Recognition Program
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+#**Traffic Sign Recognition** 
 
-Overview
----
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to classify traffic signs. You will train and validate a model so it can classify traffic sign images using the [German Traffic Sign Dataset](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset). After the model is trained, you will then try out your model on images of German traffic signs that you find on the web.
+**Build a Traffic Sign Recognition Project**
 
-We have included an Ipython notebook that contains further instructions 
-and starter code. Be sure to download the [Ipython notebook](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb). 
-
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
-
-To meet specifications, the project will require submitting three files: 
-* the Ipython notebook with the code
-* the code exported as an html file
-* a writeup report either as a markdown or pdf file 
-
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/481/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used in each step (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-The Project
----
 The goals / steps of this project are the following:
-* Load the data set
+* Load the data set (see below for links to the project data set)
 * Explore, summarize and visualize the data set
 * Design, train and test a model architecture
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
-### Dependencies
-This lab requires:
 
-* [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
 
-The lab environment can be created with CarND Term1 Starter Kit. Click [here](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) for the details.
+###Data Set Summary & Exploration
 
-### Dataset and Repository
+####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
-1. Download the data set. The classroom has a link to the data set in the "Project Instructions" content. This is a pickled dataset in which we've already resized the images to 32x32. It contains a training, validation and test set.
-2. Clone the project, which contains the Ipython notebook and the writeup template.
-```sh
-git clone https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
-cd CarND-Traffic-Sign-Classifier-Project
-jupyter notebook Traffic_Sign_Classifier.ipynb
-```
+I used two simple visualization mechanism, firstly displaying each image per category, to learn the data.
+Second - I create an histogram of how many images per class do we get in the training, validation and test data set.
+Few things to learn from it - we have only 43 categories of classes, they are not represented evenly in the data set, and it's evident some images are rather dark. The good side - the distribution of classes is the same in the training, validating and test data sets.
 
-### Requirements for Submission
-Follow the instructions in the `Traffic_Sign_Classifier.ipynb` notebook and write the project report using the writeup template as a guide, `writeup_template.md`. Submit the project code and writeup document.
+Design and Test a Model Architecture
+
+####1. 
+
+PreProcessing:
+  Firstly I preproccessed the data into grayscale images, using min_max scaling and normalized to have a mean of 0, this should help the   optimizer to converge better.
+  The suggested normalization in the notebook didn't work well for me.
+
+
+Architecture:
+  Built upon the LeNet architecture, added 2 more FC layers to make the layer deeper.
+  Added filters to try and capture more information and generalize better. 
+  Added dropout layers inbetween exisiting layers to avoid overfitting.
+
+
+HyperParameters:
+  Increased the number of epochs to allow for better converngence 
+  Use different dropoutrate for the Conv layers and the FC layers, with the belief the FC layers can have lower keep rate.
+
+####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+
+My final model consisted of the following layers:
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 32x32x1 GrayScale image   							| 
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x16 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x16 				|
+| Dropout	      	| keep_rate 0.9				|
+| Convolution 5x5	    |  1x1 stride, valid padding, outputs 10x10x25      									|
+| RELU		|         									|
+| Max pooling					| 2x2 stride,  outputs 5x5x25         									|
+| Dropout	      	| keep_rate 0.9				|
+|		FC				|					Input = 625. Output = 360							|
+|		RELU			|												|
+| Dropout	      	| keep_rate 0.85				|
+|		FC				|					Input = 360. Output = 240							|
+|		RELU			|												|
+| Dropout	      	| keep_rate 0.85				|
+|		FC				|					Input = 240. Output = 120							|
+|		RELU			|												|
+| Dropout	      	| keep_rate 0.85				|
+|		FC				|					Input = 120. Output = 43							|
+|		RELU			|												|
+| Dropout	      	| keep_rate 0.85				|
+| Softmax	      	|			|
+ 
+
+
+####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+
+I used the same training and optimizer as the LetNet lab. Decreased the batch size by half and increase the epochs to 50. 
+
+####4.
+Getting to more the 0.93 is an iterative process.
+Started with preprocessing, going deeper in layer depth and increasing the number of filters.
+The first simpler preprocessing didn't work for me, so I've chose to convert the rgb to grayscale.
+Adding dropout and changing the hyperparameters to more epochs seems to have made it better.
+
+Few future things that can help - is increase conv layers depth and going perhaps to a 3x3 filter. Also generating more data, and in more angles and intensities should help significantly. 
+
+####5.
+The model was tested on 5 new images.
+
+
