@@ -10,12 +10,9 @@ The goals / steps of this project are the following:
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
-
-
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
-
+####1. 
 I used two simple visualization mechanism, firstly displaying each image per category, to learn the data.
 Second - I create an histogram of how many images per class do we get in the training, validation and test data set.
 Few things to learn from it - we have only 43 categories of classes, they are not represented evenly in the data set, and it's evident some images are rather dark. The good side - the distribution of classes is the same in the training, validating and test data sets.
@@ -39,8 +36,7 @@ HyperParameters:
   Increased the number of epochs to allow for better converngence 
   Use different dropoutrate for the Conv layers and the FC layers, with the belief the FC layers can have lower keep rate.
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
+####2. 
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
@@ -70,8 +66,7 @@ My final model consisted of the following layers:
  
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-
+####3. 
 I used the same training and optimizer as the LetNet lab. Decreased the batch size by half and increase the epochs to 35. 
 
 ####4.
