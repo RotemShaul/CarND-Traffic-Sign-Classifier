@@ -67,7 +67,7 @@ My final model consisted of the following layers:
 
 
 ####3. 
-I used the same training and optimizer as the LetNet lab. Decreased the batch size by half and increase the epochs to 35. 
+I used the same training and optimizer as the LetNet lab. Decreased the batch size by half and increase the epochs to 50. 
 
 ####4.
 Getting to more the 0.93 is an iterative process.
