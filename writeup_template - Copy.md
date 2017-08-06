@@ -35,7 +35,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 Design and Test a Model Architecture
 
-1. 
+####1. 
 
 PreProcessing:
   Firstly I preproccessed the data into grayscale images, using min_max scaling and normalized to have a mean of 0, this should help the   optimizer to converge better.
@@ -52,7 +52,7 @@ HyperParameters:
   Increased the number of epochs to allow for better converngence 
   Use different dropoutrate for the Conv layers and the FC layers, with the belief the FC layers can have lower keep rate.
 
-2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
 
