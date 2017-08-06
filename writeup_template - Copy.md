@@ -11,13 +11,6 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 
-[//]: # (Image References)
-[image1]: ./data/extra_5/1.jpg "Traffic Sign 1"
-[image2]: ./data/extra_5/2.jpg "Traffic Sign 2"
-[image3]: ./data/extra_5/3.jpg "Traffic Sign 3"
-[image4]: ./data/extra_5/4.jpg "Traffic Sign 4"
-[image5]: ./data/extra_5/5.jpg "Traffic Sign 5"
-
 
 ###Data Set Summary & Exploration
 
@@ -26,12 +19,6 @@ The goals / steps of this project are the following:
 I used two simple visualization mechanism, firstly displaying each image per category, to learn the data.
 Second - I create an histogram of how many images per class do we get in the training, validation and test data set.
 Few things to learn from it - we have only 43 categories of classes, they are not represented evenly in the data set, and it's evident some images are rather dark. The good side - the distribution of classes is the same in the training, validating and test data sets.
-
-####2. Include an exploratory visualization of the dataset.
-
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
-
-![alt text][image1]
 
 Design and Test a Model Architecture
 
@@ -95,16 +82,7 @@ Adding dropout and changing the hyperparameters to more epochs seems to have mad
 
 Few future things that can help - is increase conv layers depth and going perhaps to a 3x3 filter. Also generating more data, and in more angles and intensities should help significantly. 
 
-###Test a Model on New Images
-
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
-
-Here are five German traffic signs that I found on the web:
-
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
-
-The first image might be difficult to classify because ...
-
+####5.
+The model was tested on 5 new images.
 
 
