@@ -77,7 +77,4 @@ Adding dropout and changing the hyperparameters to more epochs seems to have mad
 
 Few future things that can help - is increase conv layers depth and going perhaps to a 3x3 filter. Also generating more data, and in more angles and intensities should help significantly. 
 
-####5.
-The model was tested on 5 new images.
-
 
