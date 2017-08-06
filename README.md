@@ -72,7 +72,7 @@ My final model consisted of the following layers:
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-I used the same training and optimizer as the LetNet lab. Decreased the batch size by half and increase the epochs to 50. 
+I used the same training and optimizer as the LetNet lab. Decreased the batch size by half and increase the epochs to 35. 
 
 ####4.
 Getting to more the 0.93 is an iterative process.
